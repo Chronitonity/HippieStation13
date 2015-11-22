@@ -414,6 +414,16 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 
+/datum/reagent/oxygen/reaction_obj(obj/O, reac_volume)
+	if((!O) || (!reac_volume))
+		return 0
+	O.atmos_spawn_air(SPAWN_OXYGEN|SPAWN_20C, reac_volume/2)
+
+/datum/reagent/oxygen/reaction_turf(turf/simulated/T, reac_volume)
+	if(istype(T))
+		T.atmos_spawn_air(SPAWN_OXYGEN|SPAWN_20C, reac_volume/2)
+	return
+
 /datum/reagent/copper
 	name = "Copper"
 	id = "copper"
@@ -427,6 +437,16 @@
 	description = "A colorless, odorless, tasteless gas."
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
+
+/datum/reagent/nitrogen/reaction_obj(obj/O, reac_volume)
+	if((!O) || (!reac_volume))
+		return 0
+	O.atmos_spawn_air(SPAWN_NITROGEN|SPAWN_20C, reac_volume)
+
+/datum/reagent/nitrogen/reaction_turf(turf/simulated/T, reac_volume)
+	if(istype(T))
+		T.atmos_spawn_air(SPAWN_NITROGEN|SPAWN_20C, reac_volume)
+	return
 
 /datum/reagent/hydrogen
 	name = "Hydrogen"
@@ -778,7 +798,22 @@
 	description = "A secondary amine, mildly corrosive."
 	color = "#604030" // rgb: 96, 64, 48
 
+/datum/reagent/carbondioxide
+	name = "Carbon Dioxide"
+	id = "co2"
+	reagent_state = GAS
+	description = "A gas commonly produced by burning carbon fuels."
+	color = "#B0B0B0" // rgb : 192, 192, 192
 
+/datum/reagent/carbondioxide/reaction_obj(obj/O, reac_volume)
+	if((!O) || (!reac_volume))
+		return 0
+	O.atmos_spawn_air(SPAWN_CO2|SPAWN_20C, reac_volume/5)
+
+/datum/reagent/carbondioxide/reaction_turf(turf/simulated/T, reac_volume)
+	if(istype(T))
+		T.atmos_spawn_air(SPAWN_CO2|SPAWN_20C, reac_volume/5)
+	return
 
 /////////////////////////Coloured Crayon Powder////////////////////////////
 //For colouring in /proc/mix_color_from_reagents
